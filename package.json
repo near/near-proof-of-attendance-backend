@@ -16,6 +16,8 @@
   "dependencies": {
     "@fleekhq/fleek-storage-js": "^1.0.17",
     "@types/bn.js": "^5.1.0",
+    "@types/cors": "^2.8.7",
+    "@types/express": "^4.17.7",
     "@types/morgan": "^1.9.3",
     "@types/multer": "^1.4.7",
     "cors": "^2.8.5",
@@ -28,8 +30,6 @@
     "typescript": "^3.9.7"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.7",
-    "@types/express": "^4.17.7",
     "nodemon": "^2.0.4",
     "ts-node": "^8.10.2"
   }
