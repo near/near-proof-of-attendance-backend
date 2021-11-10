@@ -38,15 +38,15 @@ const mint = async (request: Request, response: Response) => {
         "description": "", 
         // "media": "https://ipfs.fleek.co/ipfs/bafybeiacydivfg63rxg7idoe6xamjcvwaf4ob47kii2sgxn5hkh2pupjga", 
         "media": url, 
-        "media_hash": "", 
-        "copies": "", 
+        "media_hash": 0, 
+        "copies": 0, 
         "issued_at": now_utc, 
         "expires_at": "01/01/2100",  // Should ask if POA nft are expirable
         "starts_at": now_utc, 
         "updated_at": now_utc, 
         "extra": "", 
         "reference": "", 
-        "reference_hash": "" 
+        "reference_hash": 0
       }
     }
 

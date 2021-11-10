@@ -3,13 +3,34 @@
   "version": "0.0.1",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "",
-    "start:prod": "",
+    "start": "yarn start:prod",
+    "start:prod": "cd server && yarn start",
+    "prestart": "cd server && yarn prestart",
     "build": "cd server && yarn build",
     "dev:server": "cd server && yarn dev",
     "test": "cd server && yarn test",
     "heroku": "yarn dev:push:heroku",
     "dev:push:heroku": "git push heroku develop:master",
     "dev:gas": "http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=gas_price params:='[\"2xrjKpmhM8ned6hXWNSPAgV6PpYbqd57ANxaB9Nu88VA\"]'"
+  },
+  "dependencies": {
+    "@fleekhq/fleek-storage-js": "^1.0.17",
+    "@types/bn.js": "^5.1.0",
+    "@types/morgan": "^1.9.3",
+    "@types/multer": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "joi": "^17.4.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.3",
+    "near-api-js": "0.43.1",
+    "typescript": "^3.9.7"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.7",
+    "@types/express": "^4.17.7",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2"
   }
 }
