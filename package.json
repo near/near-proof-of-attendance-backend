@@ -7,6 +7,7 @@
     "start:prod": "cd server && yarn start",
     "prestart": "cd server && yarn prestart",
     "build": "cd server && yarn build",
+    "dev": "yarn dev:server",
     "dev:server": "cd server && yarn dev",
     "test": "cd server && yarn test",
     "heroku": "yarn dev:push:heroku",
