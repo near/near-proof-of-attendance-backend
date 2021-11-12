@@ -4,7 +4,10 @@ import Joi from "joi";
 import { getEnvVariables } from "../utils/environment";
 import { NEAR } from "../services/near";
 import { AccountId, Attendee } from "../types"; 
-import { mock_attendees } from "../constants/attendees";
+// import { 
+//   mock_attendees, 
+//   mock_attendees2 
+// } from "../constants/attendees";
 
 const router = Router();
 
@@ -38,15 +41,15 @@ const mint = async (request: Request, response: Response) => {
         "description": "", 
         // "media": "https://ipfs.fleek.co/ipfs/bafybeiacydivfg63rxg7idoe6xamjcvwaf4ob47kii2sgxn5hkh2pupjga", 
         "media": url, 
-        "media_hash": 0, 
-        "copies": 0, 
+        "media_hash": "0", 
+        "copies": "0", 
         "issued_at": now_utc, 
         "expires_at": "01/01/2100",  // Should ask if POA nft are expirable
         "starts_at": now_utc, 
         "updated_at": now_utc, 
         "extra": "", 
         "reference": "", 
-        "reference_hash": 0
+        "reference_hash": "0"
       }
     }
 
@@ -57,6 +60,8 @@ const mint = async (request: Request, response: Response) => {
     const mint = await near.mint_batch(walletIds, nft_mint.metadata);
     // Onchain test mock_mint_batch
     // const mint = await near.mint_batch(mock_attendees, nft_mint.metadata);
+    // Onchain test mock_mint_batch 2
+    // const mint = await near.mint_batch(mock_attendees2, nft_mint.metadata);
     // console.log('mint', mint);
 
     // Offchain mint_batch

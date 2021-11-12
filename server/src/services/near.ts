@@ -22,7 +22,6 @@ export class NEAR {
   public attachedDeposit: BN | any;
   public gas: BN | any;
   private contract: any;
-  private methods: any;
   private static _instance: NEAR;
 
   private constructor() {}
@@ -159,18 +158,23 @@ export class NEAR {
   }
 
   public async nft_token_per_owner(accountId: string) {
-    const token_ids = await this.tokens_for_owner(accountId);
-    const methodName = "nft_token";
-    const tokens_iterator = async (token_id: string, index: number) => {
-      const args = {
-        token_id,
+    try {
+      const token_ids = await this.tokens_for_owner(accountId);
+      const methodName = "nft_token";
+      const tokens_iterator = async (token_id: string, index: number) => {
+        const args = {
+          token_id,
+        }
+        const result = await this.account.viewFunction(CONTRACT_NAME, methodName, args);
+        return result;
       }
-      const result = await this.account.viewFunction(CONTRACT_NAME, methodName, args);
-      return result;
+      const tokens = token_ids.map(tokens_iterator);
+      const tokens_for_owner = await Promise.all(tokens);
+      return tokens_for_owner;
+    } catch (error) {
+      console.log('error in nft_token_per_owner', error);
+      return [];
     }
-    const tokens = token_ids.map(tokens_iterator);
-    const tokens_for_owner = await Promise.all(tokens);
-    return tokens_for_owner
   }
 
 }
