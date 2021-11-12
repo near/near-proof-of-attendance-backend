@@ -210,3 +210,16 @@ export const mock_attendees = [
     "bq0apyblackpanther.testnet",
     "mo7i1tonystark.testnet"
 ]
+
+export const mock_attendees2 = [
+  "johnq.testnet",
+  "stark.testnet",
+  "asgard.testnet",
+  "captainrogers.testnet",
+  "spiderman.testnet",
+  "vision.testnet",
+  "wakanda.testnet",
+  "tchalla.testnet",
+  "blackpanther.testnet",
+  "tonystark.testnet",
+]
