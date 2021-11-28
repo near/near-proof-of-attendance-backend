@@ -8,6 +8,6 @@
     "dev": "nodemon src/server.ts",
     "build": "tsc -p .",
     "prestart": "npm run build",
-    "test": ""
+    "test": "jest"
   }
 }
