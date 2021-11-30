@@ -1,4 +1,5 @@
-describe("env", () => {
+// Tests if the .env is correctly set up
+describe("Given that the .env exists", () => {
   it("Should have a node env", () => {
     expect(process.env.NODE_ENV).toBeDefined();
   });
