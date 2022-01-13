@@ -29,7 +29,7 @@ export class NEAR {
   // Initialize contract & set global variables
   private async initialize() {
   // Initialize connection to the NEAR testnet
-    const nearConfig = getConfig(NODE_ENV || "development");
+    const nearConfig = getConfig("development");
     const privateKey = CONTRACT_OWNER_PRIVATE_KEY as string;
     const keyPair = utils.KeyPair.fromString(privateKey); 
     const keyStore = new keyStores.InMemoryKeyStore();

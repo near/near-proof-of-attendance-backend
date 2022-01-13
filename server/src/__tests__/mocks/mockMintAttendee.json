@@ -1,0 +1,15 @@
+{
+  "attendees": [
+    {
+      "attended": true,
+      "attendedTime": "Mon, 29 Nov 2021 20:01:55 GMT",
+      "name": "John",
+      "walletId": "johnq.testnet"
+    }
+  ],
+  "url": "https://ipfs.fleek.co/ipfs/bafybeick2onrvjkzw2tzkq3ui5sxqr3fzgjvorkmq5nvhuafk4vjxtkex4",
+  "token_metadata": {
+    "title": "logo",
+    "media": "https://ipfs.fleek.co/ipfs/bafybeick2onrvjkzw2tzkq3ui5sxqr3fzgjvorkmq5nvhuafk4vjxtkex4"
+  }
+}
