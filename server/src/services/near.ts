@@ -54,7 +54,6 @@ export class NEAR {
     this.attachedDeposit = attachedDeposit;
     this.gas = gas;
   }
-  
   public static async get_instance() {
     if (!this._instance) {
       const instance = new NEAR();
@@ -88,42 +87,41 @@ export class NEAR {
     } catch (error) {
       console.log('error in near service mint', error);
       return {
-        error
-      }
+        error,
+      };
     }
   }
-  
   public async mint_batch(accountIds: AccountId[], metadata: TokenMetadata) {
-    const contractId = "proofofattedanceplayground.testnet"
-    const methodName = "nft_mint_batch"
+    const contractId = "proofofattedanceplayground.testnet";
+    const methodName = "nft_mint_batch";
     try {
       // Convert 1 huge array of accountIds in to an array of arrays containing 5 elements of the original array.
-      const results: any[] = []
+      const results: any[] = [];
       const chunked_accountIds = chunk(accountIds, 4);
       const chunked_accountIds_iter = async (accountIdsGroup: string[]) => {
         const args = {
           owner_ids: accountIdsGroup,
           metadata: metadata,
-        }
+        };
         const functionCallData = {
           contractId,
           methodName,
           args,
           gas: this.gas,
           attachedDeposit: this.attachedDeposit,
-        }
+        };
         const result = await this.account.functionCall(functionCallData);
         console.log('result', result);
         results.push(result);
-      }
+      };
       // To implement chunked batch minting uncomment below line.
       chunked_accountIds.map(chunked_accountIds_iter);
       return { results };
     } catch (error) {
       console.log('error in near service mint_batch', error);
       return {
-        error
-      }
+        error,
+      };
     }
   }
   // Offchain nft_mint_batch // No longer/not really needed.
@@ -138,45 +136,47 @@ export class NEAR {
         const random_token_id = account + "."+random_string + ".token_id";
         console.log('account', account, 'random_token_id', random_token_id);
         await this.mint(account, random_token_id, metadata);
-      }
+      };
       accountIds.map(batch_mint_iter);
     } catch (error) {
       console.log('error in near service batch_mint', error)
       return {
-        error
-      }
+        error,
+      };
     }
   }
-  
+
   public async tokens_for_owner(accountId: string) {
     const args = {
       account_id: accountId ? accountId : "johnq.testnet",
-    }
-    const methodName = "nft_tokens_for_owner"
+    };
+    const methodName = "nft_tokens_for_owner";
     const result = await this.account.viewFunction(CONTRACT_NAME, methodName, args);
-    return result
+    return result;
   }
 
   public async nft_token_per_owner(accountId: string) {
     try {
       const token_ids = await this.tokens_for_owner(accountId);
-      const methodName = "nft_token";
-      const tokens_iterator = async (token_id: string, index: number) => {
-        const args = {
-          token_id,
-        }
-        const result = await this.account.viewFunction(CONTRACT_NAME, methodName, args);
-        return result;
-      }
-      const tokens = token_ids.map(tokens_iterator);
-      const tokens_for_owner = await Promise.all(tokens);
-      return tokens_for_owner;
+      // const methodName = "nft_token";
+      // const tokens_iterator = async (token_id: string, index: number) => {
+      //   const args = {
+      //     token_id,
+      //   };
+      //   const result = await this.account.viewFunction(
+      //     CONTRACT_NAME,
+      //     methodName,
+      //     args
+      //   );
+      //   return result;
+      // };
+      // const tokens = token_ids.map(tokens_iterator);
+      // const tokens_for_owner = await Promise.all(tokens);
+      // return tokens_for_owner;
+      return token_ids;
     } catch (error) {
-      console.log('error in nft_token_per_owner', error);
+      console.log("error in nft_token_per_owner", error);
       return [];
     }
   }
-
 }
-
-
