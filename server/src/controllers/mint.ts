@@ -37,7 +37,7 @@ const mint = async (request: Request, response: Response) => {
       // token_metadata coming from UI.
       // metadata,
       metadata: {
-        "title": filename, 
+        "title": "", 
         "description": "", 
         // "media": "https://ipfs.fleek.co/ipfs/bafybeiacydivfg63rxg7idoe6xamjcvwaf4ob47kii2sgxn5hkh2pupjga", 
         "media": url, 
