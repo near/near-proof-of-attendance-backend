@@ -11,7 +11,7 @@ export const getConfig = (env: string): ContractConfig | any => {
   switch (env) {
   case 'production':
   case 'mainnet':
-  // Uncomment here when dApp goes live.
+  // TODO: Uncomment here when dApp goes live.
     // return {
     //   networkId: 'mainnet',
     //   nodeUrl: 'https://rpc.mainnet.near.org',

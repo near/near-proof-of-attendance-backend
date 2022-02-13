@@ -21,6 +21,12 @@ describe("Given that the .env exists", () => {
   it("Should have a fleek storage key", () => {
     expect(process.env.FLEEK_KEY).toBeDefined();
   });
+  it("Should have a fleek key or route", () => {
+    expect(process.env.FLEEK_CONFIG_KEY).toBeDefined();
+  });
+  it("Should have a fleek Bucket name", () => {
+    expect(process.env.FLEEK_BUCKET).toBeDefined();
+  });
   it("Should have a playground object data", () => {
     expect(process.env.PLAYGROUND).toBeDefined();
   });
