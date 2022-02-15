@@ -8,7 +8,7 @@ import { getEnvVariables } from "../utils/environment";
 const router = Router();
 const upload_multer = multer({ storage: multer.memoryStorage() })
 
-const { FLEEK_KEY, FLEEK_SECRET } = getEnvVariables();
+const { FLEEK_KEY, FLEEK_SECRET, FLEEK_CONFIG_KEY, FLEEK_BUCKET } = getEnvVariables();
 
 export const upload = async (request: Request, response: Response) => {
   try {
@@ -25,8 +25,8 @@ export const upload = async (request: Request, response: Response) => {
       apiKey: FLEEK_KEY,
       apiSecret: FLEEK_SECRET,
       data,
-      key: `proof-of-attendance/${filename}`,
-      bucket: "mrrobot16-team-bucket",
+      key: `${FLEEK_CONFIG_KEY}${filename}`,
+      bucket: FLEEK_BUCKET, 
     }
     
     const uploaded = await fleek.upload(config as any);

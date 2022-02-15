@@ -16,5 +16,6 @@
   },
   "exclude": [
     "test"
-  ]
+  ],
+  "include": ["server/src/**/*"],
 }
