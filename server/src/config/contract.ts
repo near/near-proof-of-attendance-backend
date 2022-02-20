@@ -1,6 +1,5 @@
 import { ContractConfig } from "../types";
-import { getEnvVariables } from "../utils/environment"
-
+import { getEnvVariables } from "../utils/environment";
 
 const { CONTRACT_NAME } = getEnvVariables();
 // const CONTRACT_NAME = "proofofattedanceplayground.testnet";
@@ -12,16 +11,6 @@ export const getConfig = (env: string): ContractConfig | any => {
   case 'production':
   case 'mainnet':
   // TODO: Uncomment here when dApp goes live.
-    // return {
-    //   networkId: 'mainnet',
-    //   nodeUrl: 'https://rpc.mainnet.near.org',
-    //   contractName: CONTRACT_NAME,
-    //   walletUrl: 'https://wallet.near.org',
-    //   helperUrl: 'https://helper.mainnet.near.org',
-    //   explorerUrl: 'https://explorer.mainnet.near.org',
-    // }
-  case 'development':
-  case 'testnet':
     return {
       networkId: 'testnet',
       nodeUrl: 'https://rpc.testnet.near.org',

@@ -1,4 +1,12 @@
-import { connect, Contract, keyStores, WalletConnection, utils, transactions, Account } from "near-api-js";
+import {
+  connect,
+  Contract,
+  keyStores,
+  WalletConnection,
+  utils,
+  transactions,
+  Account,
+} from "near-api-js";
 import BN from "bn.js";
 
 import { getConfig } from "../config/contract";
@@ -9,9 +17,10 @@ import { chunk } from "../utils/array";
 
 import { TokenId, AccountId, TokenMetadata } from "../types";
 
-const DEFAULT_GAS = '300000000000000';
-const DEFAULT_DEPOSIT = '300000000000000';
-const { CONTRACT_OWNER_PRIVATE_KEY, CONTRACT_NAME, CONTRACT_OWNER } = getEnvVariables();
+const DEFAULT_GAS = "300000000000000";
+const DEFAULT_DEPOSIT = "300000000000000";
+const { CONTRACT_OWNER_PRIVATE_KEY, CONTRACT_NAME, CONTRACT_OWNER, NODE_ENV } =
+  getEnvVariables();
 
 export class NEAR {
   public accountId: AccountId | null = null;
@@ -26,16 +35,14 @@ export class NEAR {
 
   // Initialize contract & set global variables
   private async initialize() {
-  // Initialize connection to the NEAR testnet
-    //TODO: Change this to production when ready.
-    const nearConfig = getConfig("development");
+    // Initialize connection to the NEAR testnet
+    const nearConfig = getConfig((NODE_ENV as string) || "development");
     const privateKey = CONTRACT_OWNER_PRIVATE_KEY as string;
-    const keyPair = utils.KeyPair.fromString(privateKey); 
+    const keyPair = utils.KeyPair.fromString(privateKey);
     const keyStore = new keyStores.InMemoryKeyStore();
 
-    //TODO: Change this for mainnet when going live
-    keyStore.setKey('testnet', CONTRACT_OWNER as string, keyPair);
-    
+    keyStore.setKey(NODE_ENV as string, CONTRACT_OWNER as string, keyPair);
+
     const deps = {
       keyStore
     }
