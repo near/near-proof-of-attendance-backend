@@ -8,18 +8,16 @@ export const getConfig = (env: string): ContractConfig | any => {
   // this will be commented/remove as for production we need to make this dynamic value.
   // env = "testnet"
   switch (env) {
-  case 'production':
-  case 'mainnet':
-  // TODO: Uncomment here when dApp goes live.
-    return {
-      networkId: 'testnet',
-      nodeUrl: 'https://rpc.testnet.near.org',
-      contractName: CONTRACT_NAME,
-      // contractName: "proofofattedanceplayground.testnet",
-      walletUrl: 'https://wallet.testnet.near.org',
-      helperUrl: 'https://helper.testnet.near.org',
-      explorerUrl: 'https://explorer.testnet.near.org',
-    }
+    case "production":
+    case "mainnet":
+      return {
+        networkId: "mainnet",
+        nodeUrl: "https://rpc.mainnet.near.org",
+        contractName: CONTRACT_NAME,
+        walletUrl: "https://wallet.near.org",
+        helperUrl: "https://helper.mainnet.near.org",
+        explorerUrl: "https://explorer.mainnet.near.org",
+      };
   case 'betanet':
     return {
       networkId: 'betanet',
