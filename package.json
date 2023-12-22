@@ -15,7 +15,7 @@
     "dev:gas": "http post https://rpc.testnet.near.org jsonrpc=2.0 id=dontcare method=gas_price params:='[\"2xrjKpmhM8ned6hXWNSPAgV6PpYbqd57ANxaB9Nu88VA\"]'"
   },
   "dependencies": {
-    "@fleekhq/fleek-storage-js": "^1.0.17",
+    "@fleekhq/fleek-storage-js": "^1.0.24",
     "@types/bn.js": "^5.1.0",
     "@types/cors": "^2.8.7",
     "@types/express": "^4.17.7",
